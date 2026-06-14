@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
+import { Suspense, useEffect, useState, useCallback } from 'react'
 import { useAuthStore } from '@/store/auth-store'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { DoctorConsultationApi } from '@/lib/api/doctorConsultationApi'
@@ -20,7 +20,7 @@ import { toast } from 'sonner'
 
 const emptyMedication: MedicationItem = { name: '', dosage: '', duration: '', frequency: '', instructions: '' }
 
-export default function PrescriptionsPage() {
+function PrescriptionsInner() {
   const { user } = useAuthStore()
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -296,5 +296,17 @@ export default function PrescriptionsPage() {
         </CardContent>
       </Card>
     </div>
+  )
+}
+
+export default function PrescriptionsPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center py-20">
+        <Loader2 className="h-8 w-8 animate-spin text-emerald-600" />
+      </div>
+    }>
+      <PrescriptionsInner />
+    </Suspense>
   )
 }

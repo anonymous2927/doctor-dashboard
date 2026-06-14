@@ -75,7 +75,7 @@ export default function RegisterPage() {
   })
 
   const credentialsForm = useForm<Credentials>({
-    resolver: zodResolver(credentialsSchema),
+    resolver: zodResolver(credentialsSchema) as any,
   })
 
   const canProceedStep1 =

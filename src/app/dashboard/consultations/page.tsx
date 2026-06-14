@@ -94,7 +94,7 @@ export default function ConsultationsPage() {
                         </p>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Badge variant="confirmed">Confirmed</Badge>
+                        <Badge variant="success">Confirmed</Badge>
                         <Badge variant="outline" className="capitalize">{apt.consultation_type}</Badge>
                       </div>
                     </div>
@@ -153,7 +153,7 @@ export default function ConsultationsPage() {
                       </p>
                     </div>
                   </div>
-                  <Badge variant="completed">Completed</Badge>
+                  <Badge variant="success">Completed</Badge>
                 </div>
               </CardHeader>
               <CardContent>

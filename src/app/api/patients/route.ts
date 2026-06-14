@@ -13,7 +13,7 @@ export async function GET() {
 
     const { data: appointments, error: appointmentsError } = await supabase
       .from('appointments')
-      .select('patient_id, patient_name, patient_age, patient_gender')
+      .select('patient_id, patient_name, patient_age, patient_gender, appointment_date')
       .eq('doctor_id', user.id)
       .order('created_at', { ascending: false })
 

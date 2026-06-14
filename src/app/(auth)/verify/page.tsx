@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { Suspense, useState, useEffect, useCallback } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 import { Loader2, ShieldCheck, Mail, ArrowLeft } from 'lucide-react'
@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils/cn'
 
 const RESEND_TIMER = 30
 
-export default function VerifyPage() {
+function VerifyFormInner() {
   const [otp, setOtp] = useState<string[]>(Array(6).fill(''))
   const [isVerifying, setIsVerifying] = useState(false)
   const [timer, setTimer] = useState(RESEND_TIMER)
@@ -204,5 +204,17 @@ export default function VerifyPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function VerifyPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center min-h-screen">
+        <Loader2 className="h-8 w-8 animate-spin text-emerald-600" />
+      </div>
+    }>
+      <VerifyFormInner />
+    </Suspense>
   )
 }

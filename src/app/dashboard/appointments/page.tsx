@@ -70,9 +70,9 @@ export default function AppointmentsPage() {
     cancelled: (a) => ['cancelled', 'rejected'].includes(a.status),
   }
 
-  const statusVariant: Record<string, 'pending' | 'confirmed' | 'completed' | 'cancelled' | 'rejected'> = {
-    pending: 'pending', confirmed: 'confirmed', completed: 'completed', cancelled: 'cancelled', rejected: 'rejected',
-    rescheduled: 'pending',
+  const statusVariant: Record<string, 'default' | 'secondary' | 'destructive' | 'outline' | 'success' | 'warning'> = {
+    pending: 'warning', confirmed: 'default', completed: 'success', cancelled: 'destructive', rejected: 'destructive',
+    rescheduled: 'secondary',
   }
 
   const typeIcons = {

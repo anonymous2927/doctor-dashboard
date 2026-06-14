@@ -217,10 +217,10 @@ export default function PatientsPage() {
                         <TableCell className="capitalize">{apt.consultation_type}</TableCell>
                         <TableCell>
                           <Badge variant={
-                            apt.status === 'completed' ? 'completed' :
-                            apt.status === 'confirmed' ? 'confirmed' :
-                            apt.status === 'pending' ? 'pending' :
-                            apt.status === 'cancelled' ? 'cancelled' : 'rejected'
+                            apt.status === 'completed' ? 'success' :
+                            apt.status === 'confirmed' ? 'default' :
+                            apt.status === 'pending' ? 'warning' :
+                            apt.status === 'cancelled' ? 'destructive' : 'destructive'
                           }>{apt.status}</Badge>
                         </TableCell>
                       </TableRow>
@@ -274,7 +274,7 @@ export default function PatientsPage() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
                     <h3 className="font-semibold truncate">{patient.name}</h3>
-                    <Badge variant={patient.status === 'active' ? 'confirmed' : 'secondary'}>
+                    <Badge variant={patient.status === 'active' ? 'success' : 'secondary'}>
                       {patient.status}
                     </Badge>
                   </div>

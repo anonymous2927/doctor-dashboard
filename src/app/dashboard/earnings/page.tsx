@@ -85,10 +85,10 @@ export default function EarningsPage() {
   const pendingSettlements = earnings.filter((e) => e.payment_status === 'pending')
   const completedSettlements = earnings.filter((e) => e.payment_status === 'completed')
 
-  const paymentStatusVariant: Record<string, 'pending' | 'completed' | 'cancelled'> = {
-    pending: 'pending',
-    completed: 'completed',
-    refunded: 'cancelled',
+  const paymentStatusVariant: Record<string, 'default' | 'secondary' | 'destructive' | 'outline' | 'success' | 'warning'> = {
+    pending: 'warning',
+    completed: 'success',
+    refunded: 'destructive',
   }
 
   if (loading) {
@@ -170,11 +170,11 @@ export default function EarningsPage() {
               <h4 className="text-sm font-medium">Settlements</h4>
               <div className="flex items-center justify-between text-sm">
                 <span className="text-muted-foreground">Pending</span>
-                <Badge variant="pending">{pendingSettlements.length}</Badge>
+                <Badge variant="warning">{pendingSettlements.length}</Badge>
               </div>
               <div className="flex items-center justify-between text-sm">
                 <span className="text-muted-foreground">Completed</span>
-                <Badge variant="completed">{completedSettlements.length}</Badge>
+                <Badge variant="success">{completedSettlements.length}</Badge>
               </div>
             </div>
           </CardContent>

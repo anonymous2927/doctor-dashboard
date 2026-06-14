@@ -115,8 +115,8 @@ export default function DashboardPage() {
 
   const docName = user?.user_metadata?.full_name || doctor?.full_name || 'Doctor'
 
-  const statusVariant: Record<string, 'pending' | 'confirmed' | 'completed' | 'cancelled' | 'rejected'> = {
-    pending: 'pending', confirmed: 'confirmed', completed: 'completed', cancelled: 'cancelled', rejected: 'rejected',
+  const statusVariant: Record<string, 'default' | 'secondary' | 'destructive' | 'outline' | 'success' | 'warning'> = {
+    pending: 'warning', confirmed: 'default', completed: 'success', cancelled: 'destructive', rejected: 'destructive',
   }
 
   return (

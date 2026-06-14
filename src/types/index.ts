@@ -58,8 +58,9 @@ export interface Prescription {
   diagnosis: string
   symptoms: string
   medications: MedicationItem[]
+  tests_recommended?: string
   instructions: string
-  followup_date: string
+  followup_date: string | null
   created_at: string
 }
 
@@ -109,6 +110,7 @@ export interface Slot {
   start_time: string
   end_time: string
   status: string
+  slot_duration?: number
 }
 
 export interface ApiResponse<T> {

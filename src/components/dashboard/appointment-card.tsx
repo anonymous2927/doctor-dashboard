@@ -15,13 +15,13 @@ interface AppointmentCardProps {
   onComplete?: (id: string) => void
 }
 
-const statusVariants: Record<string, 'pending' | 'confirmed' | 'completed' | 'cancelled' | 'rejected'> = {
-  pending: 'pending',
-  confirmed: 'confirmed',
-  completed: 'completed',
-  cancelled: 'cancelled',
-  rejected: 'rejected',
-  rescheduled: 'pending',
+const statusVariants: Record<string, 'default' | 'secondary' | 'destructive' | 'outline' | 'success' | 'warning'> = {
+  pending: 'warning',
+  confirmed: 'default',
+  completed: 'success',
+  cancelled: 'destructive',
+  rejected: 'destructive',
+  rescheduled: 'secondary',
 }
 
 const typeIcons = {

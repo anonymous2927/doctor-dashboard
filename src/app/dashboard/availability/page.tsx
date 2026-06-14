@@ -212,7 +212,7 @@ export default function AvailabilityPage() {
                   </div>
                 </div>
 
-                <Badge variant={slot.enabled ? 'confirmed' : 'secondary'} className="h-6">
+                <Badge variant={slot.enabled ? 'success' : 'secondary'} className="h-6">
                   {slot.enabled ? 'Active' : 'Inactive'}
                 </Badge>
               </div>
