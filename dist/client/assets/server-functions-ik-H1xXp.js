@@ -1,0 +1,1 @@
+const a="/api";function o(){const t=typeof window<"u"?localStorage.getItem("token"):null;return t?{Authorization:`Bearer ${t}`}:{}}async function n(t){const e=await fetch(`${a}${t}`,{headers:{...o()},credentials:"include"});if(!e.ok)throw new Error((await e.json()).error);return e.json()}const s=async()=>n("/dashboard/stats"),r=async()=>n("/patients");export{r as a,s as g};

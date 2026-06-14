@@ -11,6 +11,7 @@ import { Loader2, Stethoscope, ShieldCheck, Heart, Users } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { useAuthStore } from '@/store/auth-store'
 import { cn } from '@/lib/utils/cn'
+import { Logo, LogoDark } from '@/components/ui/logo'
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -74,18 +75,7 @@ function LoginFormInner() {
       <div className="hidden lg:flex lg:w-1/2 relative bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 items-center justify-center p-12">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-400/20 via-transparent to-transparent" />
         <div className="relative z-10 max-w-md text-white">
-          <div className="flex items-center gap-4 mb-10">
-            <div className="h-14 w-14 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center">
-              <svg viewBox="0 0 24 24" className="h-8 w-8 text-white" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="3" y="3" width="18" height="18" rx="4"/>
-                <path d="M8 8h8M8 12h8M8 16h6" strokeLinecap="round"/>
-              </svg>
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold">Carenium</h1>
-              <p className="text-emerald-200 text-[11px] tracking-[3px] font-semibold">DOCTOR HUB</p>
-            </div>
-          </div>
+          <Logo className="mb-10 text-white" />
           <h2 className="text-3xl font-bold mb-4">
             Your Practice,<br />
             <span className="text-emerald-300">Intelligently Managed</span>
@@ -113,17 +103,7 @@ function LoginFormInner() {
 
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="w-full max-w-sm">
-          <div className="lg:hidden flex items-center gap-3 mb-10 justify-center">
-            <div className="h-10 w-10 rounded-xl bg-emerald-600 flex items-center justify-center">
-              <svg viewBox="0 0 24 24" className="h-6 w-6 text-white" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M8 8h8M8 12h8M8 16h6" strokeLinecap="round"/>
-              </svg>
-            </div>
-            <div className="text-left">
-              <span className="text-xl font-bold text-gray-900">Carenium</span>
-              <span className="ml-2 text-[9px] font-semibold text-gray-400 tracking-[2px]">DOCTOR HUB</span>
-            </div>
-          </div>
+          <LogoDark className="lg:hidden justify-center mb-10" />
 
           <h2 className="text-2xl font-bold text-gray-900 mb-1">Welcome back</h2>
           <p className="text-gray-500 mb-8">Sign in to your account</p>

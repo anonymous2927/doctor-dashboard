@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils/cn'
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import Image from 'next/image'
 import { Separator } from '@/components/ui/separator'
 import { useAuthStore } from '@/store/auth-store'
 import { getInitials } from '@/lib/utils/format'
@@ -56,15 +57,12 @@ export function Sidebar({ open, onClose }: SidebarProps) {
       )}>
         <div className="flex h-14 items-center justify-between border-b px-4">
           <Link href="/dashboard" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-600">
-              <svg viewBox="0 0 24 24" className="h-4 w-4 text-white" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <rect x="3" y="3" width="18" height="18" rx="3"/>
-                <path d="M8 8h8M8 12h8M8 16h6" strokeLinecap="round"/>
-              </svg>
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-600 overflow-hidden">
+              <Image src="/carenium-logo.svg" alt="Carenium" width={32} height={32} className="object-contain" />
             </div>
             <div className="flex items-baseline gap-1.5">
               <span className="font-bold text-lg">Carenium</span>
-              <span className="text-[8px] font-semibold text-gray-400 tracking-[2px]">MD</span>
+              <span className="text-[8px] font-semibold text-gray-400 tracking-[2px] uppercase">Doctor Hub</span>
             </div>
           </Link>
           <Button variant="ghost" size="icon" className="lg:hidden" onClick={onClose}>

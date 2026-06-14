@@ -18,6 +18,7 @@ import {
 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { cn } from '@/lib/utils/cn'
+import { Logo, LogoDark } from '@/components/ui/logo'
 
 const steps = [
   { id: 1, label: 'Personal Info' },
@@ -99,33 +100,25 @@ export default function RegisterPage() {
       const personal = personalForm.getValues()
       const credentials = credentialsForm.getValues()
 
-      const { data: authData, error: authError } = await supabase.auth.signUp({
-        email: personal.email,
-        password: credentials.password,
-        options: {
-          data: {
-            full_name: personal.full_name,
-            role: 'doctor',
-          },
-        },
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          full_name: personal.full_name,
+          email: personal.email,
+          mobile: personal.mobile,
+          specialization: credentials.specialization,
+          qualification: credentials.qualification,
+          experience: credentials.experience,
+          hospital: credentials.hospital,
+          clinic_address: credentials.clinic_address,
+          consultation_fee: credentials.consultation_fee,
+          password: credentials.password,
+        }),
       })
-      if (authError) throw authError
-      if (!authData.user) throw new Error('Failed to create account')
 
-      const { error: dbError } = await supabase.from('doctors').insert({
-        doctor_id: authData.user.id,
-        full_name: personal.full_name,
-        email: personal.email,
-        mobile: personal.mobile,
-        specialization: credentials.specialization,
-        qualification: credentials.qualification,
-        experience: credentials.experience,
-        hospital: credentials.hospital,
-        clinic_address: credentials.clinic_address,
-        consultation_fee: credentials.consultation_fee,
-        verification_status: 'pending',
-      })
-      if (dbError) throw dbError
+      const data = await response.json()
+      if (!response.ok) throw new Error(data.error || 'Failed to create account')
 
       setSubmitted(true)
       toast.success('Application submitted successfully!')
@@ -168,18 +161,7 @@ export default function RegisterPage() {
       <div className="hidden lg:flex lg:w-[480px] relative bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 flex-col items-center justify-center p-12">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-400/20 via-transparent to-transparent" />
         <div className="relative z-10 text-white">
-          <div className="flex items-center gap-4 mb-8">
-            <div className="h-14 w-14 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center">
-              <svg viewBox="0 0 24 24" className="h-8 w-8 text-white" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="3" y="3" width="18" height="18" rx="4"/>
-                <path d="M8 8h8M8 12h8M8 16h6" strokeLinecap="round"/>
-              </svg>
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold">Carenium</h1>
-              <p className="text-emerald-200 text-[11px] tracking-[3px] font-semibold">DOCTOR HUB</p>
-            </div>
-          </div>
+          <Logo className="mb-8 text-white" />
           <h2 className="text-3xl font-bold mb-4">
             Join Our Network of<br />
             <span className="text-emerald-300">Healthcare Professionals</span>
@@ -219,17 +201,7 @@ export default function RegisterPage() {
 
       <div className="flex-1 flex items-start justify-center p-8 pt-16 overflow-y-auto">
         <div className="w-full max-w-lg">
-          <div className="lg:hidden flex items-center gap-3 mb-10 justify-center">
-            <div className="h-10 w-10 rounded-xl bg-emerald-600 flex items-center justify-center">
-              <svg viewBox="0 0 24 24" className="h-6 w-6 text-white" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M8 8h8M8 12h8M8 16h6" strokeLinecap="round"/>
-              </svg>
-            </div>
-            <div className="text-left">
-              <span className="text-xl font-bold text-gray-900">Carenium</span>
-              <span className="ml-2 text-[9px] font-semibold text-gray-400 tracking-[2px]">DOCTOR HUB</span>
-            </div>
-          </div>
+          <LogoDark className="lg:hidden justify-center mb-10" />
 
           <div className="lg:hidden flex justify-center gap-2 mb-8">
             {steps.map((s) => (

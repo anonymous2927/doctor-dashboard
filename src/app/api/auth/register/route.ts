@@ -1,5 +1,6 @@
 import { createServerSupabase } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
+import { supabaseAdmin } from '@/lib/supabaseAdmin'
 
 export async function POST(request: Request) {
   try {
@@ -25,7 +26,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, error: 'Failed to create user' }, { status: 500 })
     }
 
-    const { error: doctorError } = await supabase.from('doctors').insert({
+    const { error: doctorError } = await supabaseAdmin.from('doctors').insert({
       doctor_id: authData.user.id,
       full_name,
       email,
