@@ -8,8 +8,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'VitaliQ - Doctor Dashboard',
-  description: 'Healthcare management platform for doctors',
+  title: 'Carenium Doctor Hub',
+  description: 'Healthcare management platform for doctors by Carenium',
   icons: { icon: '/favicon.svg' },
 }
 

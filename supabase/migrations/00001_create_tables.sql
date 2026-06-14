@@ -128,19 +128,28 @@ ALTER TABLE notifications ENABLE ROW LEVEL SECURITY;
 
 -- RLS Policies
 
--- Doctors: users can read their own profile, admins can read all
+-- Doctors: users can read, insert, update their own profile
 CREATE POLICY "Doctors can view own profile" ON doctors
   FOR SELECT USING (doctor_id = auth.uid());
+
+CREATE POLICY "Doctors can insert own profile" ON doctors
+  FOR INSERT WITH CHECK (doctor_id = auth.uid());
 
 CREATE POLICY "Doctors can update own profile" ON doctors
   FOR UPDATE USING (doctor_id = auth.uid());
 
--- Appointments: doctors see their own appointments
+-- Appointments: doctors manage their own appointments
 CREATE POLICY "Doctors can view own appointments" ON appointments
   FOR SELECT USING (doctor_id = auth.uid());
 
+CREATE POLICY "Doctors can insert own appointments" ON appointments
+  FOR INSERT WITH CHECK (doctor_id = auth.uid());
+
 CREATE POLICY "Doctors can update own appointments" ON appointments
   FOR UPDATE USING (doctor_id = auth.uid());
+
+CREATE POLICY "Doctors can delete own appointments" ON appointments
+  FOR DELETE USING (doctor_id = auth.uid());
 
 -- Slots: doctors manage their own slots
 CREATE POLICY "Doctors can view own slots" ON slots
@@ -172,9 +181,15 @@ CREATE POLICY "Doctors can create prescriptions" ON prescriptions
 CREATE POLICY "Doctors can update own prescriptions" ON prescriptions
   FOR UPDATE USING (doctor_id = auth.uid());
 
--- Patient records: doctors see their patients
+-- Patient records: doctors manage their patients
 CREATE POLICY "Doctors can view patient records" ON patient_records
   FOR SELECT USING (doctor_id = auth.uid());
+
+CREATE POLICY "Doctors can insert patient records" ON patient_records
+  FOR INSERT WITH CHECK (doctor_id = auth.uid());
+
+CREATE POLICY "Doctors can update patient records" ON patient_records
+  FOR UPDATE USING (doctor_id = auth.uid());
 
 -- Earnings: doctors see their own
 CREATE POLICY "Doctors can view own earnings" ON earnings

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none">
+  <rect x="2" y="2" width="46" height="46" rx="12" fill="#059669"/>
+  <path d="M14 16h22v4H14zM14 23h22v4H14zM14 30h16v4H14z" fill="white"/>
+  <text x="58" y="35" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="700" fill="#059669">Carenium</text>
+  <text x="58" y="46" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#6b7280" letter-spacing="3">DOCTOR HUB</text>
+</svg>

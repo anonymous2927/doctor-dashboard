@@ -7,7 +7,7 @@ import { z } from 'zod'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
-import { Loader2, Stethoscope, ShieldCheck, Activity, Ambulance } from 'lucide-react'
+import { Loader2, Stethoscope, ShieldCheck, Heart, Users } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { useAuthStore } from '@/store/auth-store'
 import { cn } from '@/lib/utils/cn'
@@ -74,13 +74,16 @@ function LoginFormInner() {
       <div className="hidden lg:flex lg:w-1/2 relative bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 items-center justify-center p-12">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-400/20 via-transparent to-transparent" />
         <div className="relative z-10 max-w-md text-white">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="h-12 w-12 rounded-xl bg-white/20 backdrop-blur flex items-center justify-center">
-              <Stethoscope className="h-7 w-7" />
+          <div className="flex items-center gap-4 mb-10">
+            <div className="h-14 w-14 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center">
+              <svg viewBox="0 0 24 24" className="h-8 w-8 text-white" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="3" y="3" width="18" height="18" rx="4"/>
+                <path d="M8 8h8M8 12h8M8 16h6" strokeLinecap="round"/>
+              </svg>
             </div>
             <div>
-              <h1 className="text-2xl font-bold">VitaliQ</h1>
-              <p className="text-emerald-200 text-sm">Doctor Platform</p>
+              <h1 className="text-2xl font-bold">Carenium</h1>
+              <p className="text-emerald-200 text-[11px] tracking-[3px] font-semibold">DOCTOR HUB</p>
             </div>
           </div>
           <h2 className="text-3xl font-bold mb-4">
@@ -89,13 +92,13 @@ function LoginFormInner() {
           </h2>
           <p className="text-emerald-100/80 mb-12 leading-relaxed">
             Streamline appointments, manage patient records, and grow your practice
-            with our all-in-one healthcare platform.
+            with Carenium's all-in-one healthcare platform.
           </p>
           <div className="grid grid-cols-2 gap-4">
             {[
-              { icon: Activity, label: '500+', sub: 'Active Doctors' },
-              { icon: Ambulance, label: '10K+', sub: 'Patients Served' },
-              { icon: ShieldCheck, label: '99.9%', sub: 'Uptime' },
+              { icon: ShieldCheck, label: '500+', sub: 'Active Doctors' },
+              { icon: Heart, label: '10K+', sub: 'Patients Served' },
+              { icon: Users, label: '99.9%', sub: 'Uptime' },
               { icon: Stethoscope, label: '4.8★', sub: 'Avg Rating' },
             ].map((stat) => (
               <div key={stat.sub} className="bg-white/10 backdrop-blur rounded-xl p-4">
@@ -112,9 +115,14 @@ function LoginFormInner() {
         <div className="w-full max-w-sm">
           <div className="lg:hidden flex items-center gap-3 mb-10 justify-center">
             <div className="h-10 w-10 rounded-xl bg-emerald-600 flex items-center justify-center">
-              <Stethoscope className="h-6 w-6 text-white" />
+              <svg viewBox="0 0 24 24" className="h-6 w-6 text-white" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M8 8h8M8 12h8M8 16h6" strokeLinecap="round"/>
+              </svg>
             </div>
-            <span className="text-xl font-bold text-gray-900">VitaliQ</span>
+            <div className="text-left">
+              <span className="text-xl font-bold text-gray-900">Carenium</span>
+              <span className="ml-2 text-[9px] font-semibold text-gray-400 tracking-[2px]">DOCTOR HUB</span>
+            </div>
           </div>
 
           <h2 className="text-2xl font-bold text-gray-900 mb-1">Welcome back</h2>
