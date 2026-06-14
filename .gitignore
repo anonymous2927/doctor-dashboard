@@ -4,3 +4,9 @@ node_modules/
 *.log
 .DS_Store
 Thumbs.db
+.lovable/
+project.json
+patient-app/.lovable/
+patient-app/project.json
+patient-app/bun.lock
+patient-app/bunfig.toml

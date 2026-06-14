@@ -1,0 +1,13 @@
+{
+  "buildCommand": "npm run build && node scripts/copy-vercel-output.mjs",
+  "installCommand": "npm install",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/__server" }
+  ],
+  "functions": {
+    "__server.func": {
+      "memory": 512,
+      "maxDuration": 30
+    }
+  }
+}
